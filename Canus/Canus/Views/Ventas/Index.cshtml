@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Canus.Models.Venta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            Fecha @Html.TextBox("datesearch", null, htmlAttributes: new { @class = "form-control", mask = "99/99/9999", @placeholder = "dd/mm/yyyy" })
+            Busqueda: Estetica
+            @Html.DropDownList("esteticaid", null, "Seleccionar", htmlAttributes: new { @class = "form-control" })
+            Busqueda: Estilista
+            @Html.DropDownList("estilistaid", null, "Seleccionar", htmlAttributes: new { @class = "form-control" })
+            Busqueda: Servicios
+            @Html.DropDownList("servicioid", null, "Seleccionar", htmlAttributes: new { @class = "form-control" })
+
+            <input type="submit" name="btnSubmit" value="Filter" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estetica.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estilista.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicio.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estetica.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estilista.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servicio.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+    <tfoot>
+        <tr>
+            <td>
+                Total
+            </td>
+            <th></th>
+            <th></th>
+            <th></th>
+            <td>
+                @ViewBag.Total
+            </td>
+
+        </tr>
+    </tfoot>
+
+</table>
