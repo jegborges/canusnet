@@ -4,7 +4,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Canus" expanded="True" selected="True">
+          <Node name="Canus" expanded="True">
             <Node name="Canus" expanded="True">
               <Node name="Packages" expanded="True" />
             </Node>
